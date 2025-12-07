@@ -1,0 +1,16 @@
+# Screenshots Directory
+
+Place your UI screenshots here. The README.md references the following images:
+
+- main-interface.png - Main application interface
+- canvas-drawing.png - Canvas with a drawing example
+- chat-dark-theme.png - Command chat in dark theme
+- chat-light-theme.png - Command chat in light theme
+- help-panel.png - Help panel showing command reference
+- square-example.png - Example drawing of a square
+- layout-overview.png - Overview of the main layout
+- resizable-panels.png - Showing the resizable divider
+- floating-panel-info.png - Floating panel showing turtle info
+- floating-panel-help.png - Floating panel showing help
+- command-history.png - Command history display
+
