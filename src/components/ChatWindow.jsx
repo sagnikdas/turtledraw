@@ -75,10 +75,10 @@ function ChatWindow({ history, onExecute, onClear, onClearHistory, disabled }) {
                                 }
                             }}
                             disabled={disabled}
-                            title="Clear Command History"
-                        >
-                            Clear
-                        </button>
+                        title="Clear Command History"
+                    >
+                        🗑️ Clear
+                    </button>
                     )}
                 </div>
             </div>
@@ -86,8 +86,8 @@ function ChatWindow({ history, onExecute, onClear, onClearHistory, disabled }) {
             <div className={`chat-messages ${theme}-theme`}>
                 {history.length === 0 ? (
                     <div className="chat-empty">
-                        <p>Start typing commands to see them here!</p>
-                        <p className="chat-hint">Try: FD 50, RT 90</p>
+                        <p>🎉 Start typing commands to see them here! 🎉</p>
+                        <p className="chat-hint">💡 Try: FD 50, RT 90</p>
                     </div>
                 ) : (
                     history.map((cmd, index) => (
@@ -112,7 +112,7 @@ function ChatWindow({ history, onExecute, onClear, onClearHistory, disabled }) {
                         value={command}
                         onChange={(e) => setCommand(e.target.value)}
                         onKeyPress={handleKeyPress}
-                        placeholder="Type a command and press Enter..."
+                        placeholder="🎨 Type a command like FD 50 and press Enter! 🚀"
                         disabled={disabled}
                         autoComplete="off"
                         autoFocus

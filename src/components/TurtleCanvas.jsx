@@ -12,7 +12,7 @@ const TurtleCanvas = forwardRef(({ turtle, onExecute }, ref) => {
     const [isDragging, setIsDragging] = useState(false)
     const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
     const [isMinimized, setIsMinimized] = useState(true)
-    const [buttonPosition, setButtonPosition] = useState({ x: 15, y: 15 })
+    const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 })
     const [isDraggingButton, setIsDraggingButton] = useState(false)
     const [buttonDragStart, setButtonDragStart] = useState({ x: 0, y: 0 })
     const [buttonWasDragged, setButtonWasDragged] = useState(false)
@@ -20,6 +20,28 @@ const TurtleCanvas = forwardRef(({ turtle, onExecute }, ref) => {
     const overlayRef = useRef(null)
     const containerRef = useRef(null)
     const buttonRef = useRef(null)
+
+    // Set initial button position to bottom right
+    useEffect(() => {
+        const updateButtonPosition = () => {
+            if (containerRef.current) {
+                const container = containerRef.current
+                const containerRect = container.getBoundingClientRect()
+                const buttonSize = 50 // Button is 50x50px
+                const padding = 20 // Padding from edges
+                const x = containerRect.width - buttonSize - padding
+                const y = containerRect.height - buttonSize - padding
+                setButtonPosition({ x, y })
+            }
+        }
+
+        // Set position initially
+        updateButtonPosition()
+
+        // Update on window resize
+        window.addEventListener('resize', updateButtonPosition)
+        return () => window.removeEventListener('resize', updateButtonPosition)
+    }, [])
 
     useEffect(() => {
         if (!turtle) return
@@ -154,11 +176,16 @@ const TurtleCanvas = forwardRef(({ turtle, onExecute }, ref) => {
 
     const handleMinimize = () => {
         setIsMinimized(true)
-        // Save button position near overlay position
-        setButtonPosition({
-            x: overlayPosition.x,
-            y: overlayPosition.y
-        })
+        // Reset button position to bottom right
+        if (containerRef.current) {
+            const container = containerRef.current
+            const containerRect = container.getBoundingClientRect()
+            const buttonSize = 50 // Button is 50x50px
+            const padding = 20 // Padding from edges
+            const x = containerRect.width - buttonSize - padding
+            const y = containerRect.height - buttonSize - padding
+            setButtonPosition({ x, y })
+        }
     }
 
     const handleRestore = (e) => {

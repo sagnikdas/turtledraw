@@ -97,8 +97,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🐢 LOGO Turtle</h1>
-        <p className="subtitle">Type commands to make the turtle draw!</p>
+        <h1>🐢 LOGO Turtle <span className="subtitle">Type commands to make the turtle draw!</span></h1>
       </header>
 
       <div className="main-layout" ref={mainLayoutRef}>
